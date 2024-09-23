@@ -1,21 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-interface TextInputProps {
-    label: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const TextInput = ({ label, value, onChange } : TextInputProps) => {
+const TextInput = ({
+  label = 'Enter a value here',
+  value,
+  className,
+  type = 'text',
+  onChange = () => {},
+} : TextInputProps) => {
   const [currentValue, setCurrentValue] = useState(value)
+
+  const handleChange = (e) => {
+    setCurrentValue(e.target.value);
+    onChange(e);
+  };
+
+  useEffect(() => {
+    setCurrentValue(value);
+  }, [value]);
 
   return (
     <div className='w-full mt-5'>
       <input
-        type='text'
-        className='w-full border border-gray-300 rounded p-5'
+        type={type}
+        className={`${className} w-full border border-gray-300 rounded p-5`}
         value={currentValue}
-        onChange={(e) => setCurrentValue(e.target.value)}
+        onChange={handleChange}
         placeholder={label}
       />
     </div>
