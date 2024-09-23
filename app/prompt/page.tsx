@@ -69,13 +69,13 @@ export default function Prompt() {
           <TextInput label="Enter your prompt..." value={userInput} onChange={setUserInput} onKeyDown={handleKeyDown} />
         }
         
-        {/* {!isSubmitted && */}
+        {!isSubmitted &&
           <PrimaryButton
             label="Submit"
             onClick={handleSubmit} 
             className="mb-5"
           />
-        {/* } */}
+        }
       </div>
     </div>
   )
