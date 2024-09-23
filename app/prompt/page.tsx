@@ -40,11 +40,13 @@ export default function Prompt() {
     <div className={`${styles.page} border border-red-500 h-screen`}>
       <h1 className="text-3xl font-bold">Prompt UI</h1>
 
-      {mockResponse.map((response, index) => (
-        <div key={index} className="mt-5 pl-5" style={{ overflowY: 'scroll' }}>
-          <p className="text-lg">{response}</p>
-        </div>
-      ))}
+      <div className={`mt-5 pl-5 border ${isSubmitted ? 'h-3/5' : ''} border-red-500`} style={{ overflowY: 'scroll' }}>
+        {mockResponse.map((response, index) => (
+          <div key={index} className="mt-5 pl-5">
+            <p className="text-lg">{response}</p>
+          </div>
+        ))}
+      </div>
 
       <div className={`transition-transform duration-1000 ease-in-out fixed left-16 right-16 ${isSubmitted ? `transform ${styles.translateY2full} bottom-0` : 'transform translate-y-0'}`}>
         {isSubmitted ?
