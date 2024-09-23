@@ -14,21 +14,23 @@ export default function Prompt() {
   }
 
   return (
-    <div className={styles.page}>
+    <div className={`${styles.page} border border-red-500 h-screen`}>
       <h1 className="text-3xl font-bold">Prompt UI</h1>
 
-      <div className={isSubmitted ? 'fixed bottom-0 left-16 right-16' : 'relative'}>
+      <div className={`transition-transform duration-700 ease-in-out fixed left-16 right-16 ${isSubmitted ? `transform ${styles.translateY2full}` : 'transform translate-y-0'}`}>
         {isSubmitted ?
           <TextArea label="Enter your prompt..." />
         :
           <TextInput label="Enter your prompt..." />
         }
         
-        <PrimaryButton
-          label="Submit"
-          onClick={handleSubmit} 
-          className="mb-5"
-        />
+        {!isSubmitted &&
+          <PrimaryButton
+            label="Submit"
+            onClick={handleSubmit} 
+            className="mb-5"
+          />
+        }
       </div>
     </div>
   );
