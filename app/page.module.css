@@ -1,3 +1,5 @@
 .page {
   padding: 64px;
+  position: relative;
+  overflow: hidden;
 }
