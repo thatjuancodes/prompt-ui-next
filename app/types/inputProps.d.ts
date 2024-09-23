@@ -6,6 +6,7 @@ interface InputProps {
 interface TextInputProps extends InputProps {
   value?: string
   type?: string
+  onKeyDown?: (event: React.KeyboardEvent) => void
   onChange?: (value: string) => void
 }
 

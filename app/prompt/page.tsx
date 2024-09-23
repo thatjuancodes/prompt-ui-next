@@ -1,17 +1,17 @@
 'use client';
 
-import { useRef, useState } from "react";
-import PrimaryButton from "../components/PrimaryButton";
-import TextInput from "../components/TextInput";
-import styles from "../page.module.css";
-import TextArea from "../components/TextArea";
-import { mock } from "node:test";
+import { useRef, useState } from "react"
+import PrimaryButton from "../components/PrimaryButton"
+import TextInput from "../components/TextInput"
+import styles from "../page.module.css"
+import TextArea from "../components/TextArea"
+import { mock } from "node:test"
 
 export default function Prompt() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [userInput, setUserInput] = useState('')
   const [mockResponse, setMockResponse] = useState<Array<string | Element | React.JSX.Element>>([])
-  const responseEndRef = useRef<HTMLDivElement | null>(null);
+  const responseEndRef = useRef<HTMLDivElement | null>(null)
 
   const generateMockResponse = (textInput: string) => {
     const mockResponse = [
@@ -28,7 +28,7 @@ export default function Prompt() {
           <br />
         {response}
       </span>
-    );
+    )
   }
 
   const handleSubmit = () => {
@@ -38,8 +38,14 @@ export default function Prompt() {
     setTimeout(() => {
       if (responseEndRef.current === null) return
 
-      responseEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+      responseEndRef.current.scrollIntoView({ behavior: 'smooth' })
+    }, 100)
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      handleSubmit()
+    }
   }
 
   return (
@@ -58,9 +64,9 @@ export default function Prompt() {
 
       <div className={`transition-transform duration-1000 ease-in-out fixed left-16 right-16 ${isSubmitted ? `transform ${styles.translateY2full} bottom-0` : 'transform translate-y-0'}`}>
         {isSubmitted ?
-          <TextArea label="Enter your prompt..." value={userInput} onChange={setUserInput}/>
+          <TextArea label="Enter your prompt..." value={userInput} onChange={setUserInput} onKeyDown={handleKeyDown} />
         :
-          <TextInput label="Enter your prompt..." value={userInput} onChange={setUserInput} />
+          <TextInput label="Enter your prompt..." value={userInput} onChange={setUserInput} onKeyDown={handleKeyDown} />
         }
         
         {/* {!isSubmitted && */}
@@ -72,5 +78,5 @@ export default function Prompt() {
         {/* } */}
       </div>
     </div>
-  );
+  )
 }

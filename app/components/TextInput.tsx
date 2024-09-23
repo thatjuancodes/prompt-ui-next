@@ -6,6 +6,7 @@ const TextInput = ({
   className,
   type = 'text',
   onChange = () => {},
+  onKeyDown = () => {},
 } : TextInputProps) => {
   const [currentValue, setCurrentValue] = useState(value)
 
@@ -26,6 +27,7 @@ const TextInput = ({
         value={currentValue}
         onChange={handleChange}
         placeholder={label}
+        onKeyDown={onKeyDown}
       />
     </div>
   )
