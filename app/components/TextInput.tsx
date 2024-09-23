@@ -11,7 +11,7 @@ const TextInput = ({
 
   const handleChange = (e) => {
     setCurrentValue(e.target.value);
-    onChange(e);
+    onChange(e.target.value);
   };
 
   useEffect(() => {

@@ -6,7 +6,7 @@ interface InputProps {
 interface TextInputProps extends InputProps {
   value?: string
   type?: string
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (value: string) => void
 }
 
 interface ButtonProps extends InputProps {

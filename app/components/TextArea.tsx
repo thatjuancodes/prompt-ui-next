@@ -10,7 +10,7 @@ const TextArea = ({
 
   const handleChange = (e) => {
     setCurrentValue(e.target.value);
-    onChange(e);
+    onChange(e.target.value);
   };
 
   useEffect(() => {
