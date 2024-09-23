@@ -23,8 +23,8 @@ export default function Prompt() {
     const response = mockResponse[Math.floor(Math.random() * mockResponse.length)]
     return (
       <span>
-        {textInput}
-        <br />
+        <span className='text-red-500 italic'>{textInput}</span>
+          <br />
         {response}
       </span>
     );
@@ -41,7 +41,7 @@ export default function Prompt() {
       <h1 className="text-3xl font-bold">Prompt UI</h1>
 
       {mockResponse.map((response, index) => (
-        <div key={index} className="mt-5" style={{ overflowY: 'scroll' }}>
+        <div key={index} className="mt-5 pl-5" style={{ overflowY: 'scroll' }}>
           <p className="text-lg">{response}</p>
         </div>
       ))}
