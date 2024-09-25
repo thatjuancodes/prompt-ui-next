@@ -5,12 +5,11 @@ import PrimaryButton from "../components/PrimaryButton"
 import TextInput from "../components/TextInput"
 import styles from "../page.module.css"
 import TextArea from "../components/TextArea"
-import { mock } from "node:test"
 
 export default function Prompt() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [userInput, setUserInput] = useState('')
-  const [mockResponse, setMockResponse] = useState<Array<string | Element | React.JSX.Element>>([])
+  const [mockResponse, setMockResponse] = useState<Array<string | React.JSX.Element>>([])
   const responseEndRef = useRef<HTMLDivElement | null>(null)
 
   const generateMockResponse = (textInput: string) => {
