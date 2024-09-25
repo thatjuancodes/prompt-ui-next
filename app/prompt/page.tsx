@@ -50,7 +50,7 @@ export default function Prompt() {
 
   return (
     <div className={`${styles.page} border h-screen`}>
-      <h1 className="text-3xl font-bold">Prompt UI</h1>
+      <h1 className="text-3xl font-bold text-gray-400">Prompt UI</h1>
 
       <div className={`mt-5 pl-5 ${isSubmitted ? 'h-3/5 pb-5' : ''}`} style={{ overflowY: 'scroll' }}>
         {mockResponse.map((response, index) => (
@@ -63,9 +63,12 @@ export default function Prompt() {
       </div>
 
       <div className={`transition-transform duration-1000 ease-in-out fixed left-16 right-16 ${isSubmitted ? `transform ${styles.translateY2full} bottom-0` : 'transform translate-y-0'}`}>
-        <span className="float-right text-gray-400 italic">Use SHIFT + RETURN/ENTER to add a newline | Hit ENTER/RETURN to submit your queries...</span>
         {isSubmitted ?
-          <TextArea label="Enter your prompt..." value={userInput} onChange={setUserInput} onKeyDown={handleKeyDown} />
+          <>
+            <span className="float-right text-gray-400 italic">Use SHIFT + RETURN/ENTER to add a newline | Hit ENTER/RETURN to submit your queries...</span>
+
+            <TextArea label="Enter your prompt..." value={userInput} onChange={setUserInput} onKeyDown={handleKeyDown} />
+          </>
         :
           <TextInput label="Enter your prompt..." value={userInput} onChange={setUserInput} onKeyDown={handleKeyDown} />
         }
