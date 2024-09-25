@@ -42,7 +42,8 @@ export default function Prompt() {
   }
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter') {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault(); // Prevent default form submission
       handleSubmit()
     }
   }
@@ -62,7 +63,7 @@ export default function Prompt() {
       </div>
 
       <div className={`transition-transform duration-1000 ease-in-out fixed left-16 right-16 ${isSubmitted ? `transform ${styles.translateY2full} bottom-0` : 'transform translate-y-0'}`}>
-        <span className="float-right text-gray-400 italic">Hit enter to submit your queries...</span>
+        <span className="float-right text-gray-400 italic">Use SHIFT + RETURN/ENTER to add a newline | Hit ENTER/RETURN to submit your queries...</span>
         {isSubmitted ?
           <TextArea label="Enter your prompt..." value={userInput} onChange={setUserInput} onKeyDown={handleKeyDown} />
         :
